@@ -9,37 +9,37 @@ const UserForm = () => {
       <label className="block text-white text-sm font-bold mb-2" htmlFor="username">
         Name
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username" />
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username" />
     </div>
     <div className="mb-4">
       <label className="block text-white text-sm font-bold mb-2" htmlFor="registrationNumber">
         Registration Number
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline" id="registrationNumber" type="text" placeholder="Registration Number" />
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" id="registrationNumber" type="text" placeholder="Registration Number" />
     </div>
     <div className="mb-4">
       <label className="block text-white text-sm font-bold mb-2" htmlFor="studyProgram">
         Study Program
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline" id="studyProgram" type="text" placeholder="Study Program" />
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" id="studyProgram" type="text" placeholder="Study Program" />
     </div>
     <div className="mb-4">
       <label className="block text-white text-sm font-bold mb-2" htmlFor="faculty">
         Faculty
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline" id="faculty" type="text" placeholder="Faculty" />
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" id="faculty" type="text" placeholder="Faculty" />
     </div>
     <div className="mb-4">
       <label className="block text-white text-sm font-bold mb-2" htmlFor="academicYear">
         Academic Year
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline" id="academicYear" type="text" placeholder="Academic Year" />
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" id="academicYear" type="text" placeholder="Academic Year" />
     </div>
     <div className="mb-6">
       <label className="block text-white text-sm font-bold mb-2" htmlFor="email">
         Email
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-white mb-3 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" />
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-black mb-3 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" />
     </div>
     <div className="flex items-center justify-between">
       <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">

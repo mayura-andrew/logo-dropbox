@@ -12,8 +12,8 @@ export default function Dropbox() {
       thumbnailUrl: string | null;
     }>();
     const { edgestore } = useEdgeStore();
+    const [buttonText, setButtonText] = useState("Submit");
   
-    const onSubmit = (data:any) => console.log(data);
   
     return (
       <>
@@ -38,6 +38,7 @@ export default function Dropbox() {
         <button
           className="bg-white text-black rounded m-2 items-center hover:opacity-80 font-bold py-2 px-4  focus:outline-none focus:shadow-outline"
           onClick={async () => {
+            setButtonText("Submitting... 🚀"); 
             if (file) {
               const res = await edgestore.myPublicImages.upload({
                 file,
@@ -51,10 +52,11 @@ export default function Dropbox() {
                 url: res.url,
                 thumbnailUrl: res.thumbnailUrl,
               });
+              setButtonText("Submitted! 🎉"); 
             }
           } }
         >
-          Upload
+          {buttonText} {/* Display the current button text */}
         </button>
         {urls?.url && (
           <Link href={urls.url} target="_blank">
