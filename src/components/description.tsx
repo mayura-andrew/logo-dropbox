@@ -11,7 +11,7 @@ const CompetitionDetails = () => {
         <ol className="list-disc list-inside space-y-2">
           <li className="bg-gray-800 p-2 rounded">Submit Your Design: Designers can submit their logo designs using our simple submission form. All entries must be original creations.</li>
           <li className="bg-gray-500 p-2 rounded">Theme: The theme for the logo design is &quot;Innovation and Collaboration.&quot; Designers are encouraged to incorporate elements that represent our platform&apos;s core values.</li>
-          <li className="bg-gray-800 p-2 rounded">Format: Logos should be submitted in vector format (AI, SVG, EPS) for scalability. Additionally, include a high-resolution PNG or JPEG preview of the logo.</li>
+          <li className="bg-gray-800 p-2 rounded">Format: Participants should submit their logos in vector format (AI, SVG, EPS) to ensure scalability. Along with this, a high-resolution PNG or JPEG preview of the logo should also be included. Please note that the participant's Registration Number must be included in the right-hand corner of the image file. For an example, please click here.</li>
           <li className="bg-gray-500 p-2 rounded">Deadline: Submissions will be accepted until [deadline date]. Late entries will not be considered.</li>
         </ol>
 
