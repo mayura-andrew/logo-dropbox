@@ -2,9 +2,9 @@ import React from 'react';
 
 const UserForm = () => {
   return (
-    <div className="w-full max-w-xs ml-4">
-  <h2 className="text-lg font-bold text-black">Tell about you</h2>
-  <form className="bg-black shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div className="w-full max-w-xs sm:max-w-md ml-4">
+  <h2 className="text-lg font-bold text-white items-center">Tell about you</h2>
+  <form className="bg-black shadow-md rounded  px-4 sm:px-8 pt-6 pb-8 mb-4">
     <div className="mb-4">
       <label className="block text-white text-sm font-bold mb-2" htmlFor="username">
         Name
