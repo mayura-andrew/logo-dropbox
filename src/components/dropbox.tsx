@@ -12,7 +12,7 @@ export default function Dropbox() {
       thumbnailUrl: string | null;
     }>();
     const { edgestore } = useEdgeStore();
-    const [buttonText, setButtonText] = useState("Submit");
+    const [buttonText, setButtonText] = useState("Upload");
   
   
     return (
