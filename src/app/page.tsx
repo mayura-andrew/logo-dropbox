@@ -9,7 +9,7 @@ export default function Page() {
 
   return (
     <>
-      <div className="flex flex-col items-center gap-2">
+      <div className="flex flex-col items-center gap-2 bg-black text-white">
         <div className="flex flex-col lg:flex-row m-8 gap-4">
           {showDetails && <CompetitionDetails />}
           <Dropbox />
