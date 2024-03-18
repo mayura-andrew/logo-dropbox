@@ -36,7 +36,7 @@ export default function Dropbox() {
             }} />
         </div>
         <button
-          className="bg-white text-black rounded m-2 items-center hover:opacity-80 font-bold py-2 px-4  focus:outline-none focus:shadow-outline"
+          className="bg-black text-white rounded m-2 items-center hover:opacity-80 font-bold py-2 px-4  focus:outline-none focus:shadow-outline"
           onClick={async () => {
             setButtonText("Submitting... 🚀"); 
             if (file) {
