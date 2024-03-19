@@ -22,6 +22,7 @@ export default function Page() {
           </button>
         </div>   
       </div>
+      <p className="text-center text-sm mt-3">Developed by <a href="https://github.com/mayura-andrew" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">@mayura-andrew</a></p>
     </>
   );
 }
