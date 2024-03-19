@@ -13,8 +13,7 @@ export default function Dropbox() {
     }>();
     const { edgestore } = useEdgeStore();
     const [buttonText, setButtonText] = useState("Upload");
-  
-  
+
     return (
       <>
     <div>
@@ -26,8 +25,9 @@ export default function Dropbox() {
             maxSize: 1024 * 1024 * 5, // 5MB
           }}
           onChange={(file) => {
-            setFile(file);
-          } } />
+              setFile(file);
+          }} 
+          />
         <div className="h-[6px] w-44 border rounded overflow-hidden">
           <div
             className="h-full bg-white transition-all duration-150"
