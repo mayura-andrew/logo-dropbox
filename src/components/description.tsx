@@ -5,13 +5,9 @@ const CompetitionDetails = () => {
   return (
          <div className="prose prose-lg max-w-none text-white rounded-xl">
         <div className="prose prose-lg max-w-none items-center">
-        <h1 className="text-3xl items-center font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-yellow-500 to-white">
-          Logo Design Competition
-        </h1> 
-        <h1 className="text-2xl items-center font-bold mb-4 bg-clip-text text-white">
-        The Open University of Sri Lanka          
-        </h1>
-             
+        <h1 className="text-4xl items-center font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-yellow-500 to-white">
+          Logo Design Competition - The Open University of Sri Lanka
+        </h1>   
         <h2 className='text-1xl font-mono font-bold mb-3'>Submit Your Creativity!</h2>
           <p>🎨 Welcome to the Logo Design Competition, where creativity meets innovation! We invite talented designers from all backgrounds to showcase their skills and contribute to the visual identity of our upcoming platform.</p>
 

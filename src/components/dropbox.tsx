@@ -1,80 +1,41 @@
-import { SingleImageDropzone } from "@/components/single-image-dropzone";
-import { useEdgeStore } from "@/lib/edgestore";
-import Link from "next/link";
-import { useState } from "react";
+"use client";
+import { useState } from 'react';
+import CompetitionDetails from '@/components/description';
+import UserForm from "@/components/userform";
+import Dropbox from "@/components/dropbox";
 
+export default function Page() {
+  const [showDetails, setShowDetails] = useState(false);
 
-export default function Dropbox() {
-    const [file, setFile] = useState<File>();
-    const [progress, setProgress] = useState(0);
-    const [urls, setUrls] = useState<{
-      url: string;
-      thumbnailUrl: string | null;
-    }>();
-    const { edgestore } = useEdgeStore();
-    const [buttonText, setButtonText] = useState("Upload");
-
-    return (
-      <>
-    <div>
-      <SingleImageDropzone
-          width={200}
-          height={200}
-          value={file}
-          dropzoneOptions={{
-            maxSize: 1024 * 1024 * 5, // 5MB
-          }}
-          onChange={(file) => {
-              setFile(file);
-          }} 
-          />
-        <div className="h-[6px] w-50 border rounded overflow-hidden">
-          <div
-            className="h-full bg-white transition-all duration-150"
-            style={{
-              width: `${progress}%`,
-            }} />
-        </div>
-        <div className="flex items-center justify-center">
-        <button
-          className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 m-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          onClick={async () => {
-            if (!file) {
-              alert("Please select an image file before submitting😊.");
-              return;
-            }
-            setButtonText("Submitting... 🚀"); 
-            if (file) {
-              const res = await edgestore.myPublicImages.upload({
-                file,
-                input: { type: "post" },
-                onProgressChange: (progress) => {
-                  setProgress(progress);
-                },
-              });
-              // save your data here
-              setUrls({
-                url: res.url,
-                thumbnailUrl: res.thumbnailUrl,
-              });
-              setButtonText("Submitted! 🎉"); 
-            }
-          } }
-        >
-          {buttonText} {/* Display the current button text */}
-        </button>
-        </div>
-        {urls?.url && (
-          <Link href={urls.url} target="_blank">
-            URL
-          </Link>
-        )}
-        {urls?.thumbnailUrl && (
-          <Link href={urls.thumbnailUrl} target="_blank">
-            Review
-          </Link>
-        )}
-    </div>
-  </>
-    );
-  }
+  return (
+    <>
+      <div className="flex flex-col items-center gap-2 bg-black text-white prose prose-lg max-w-none rounded-xl bg-gradient-to-r from-gray-800 via-black to-gray-">
+        <div className="flex flex-col lg:flex-row m-4 lg:m-8 gap-2 lg:gap-4">
+          {showDetails ? (
+            <>
+              <CompetitionDetails />
+              <button 
+                className="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded mt-4 lg:mt-0" 
+                onClick={() => setShowDetails(!showDetails)}
+              >
+                Submit Your Design
+              </button>
+            </>
+          ) : (
+            <>
+              <Dropbox />
+              <UserForm />
+              <button 
+                className="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded mt-4 lg:mt-0" 
+                onClick={() => setShowDetails(!showDetails)}
+              >
+                About this Competition ⬅️
+              </button>
+            </>
+          )}
+        </div>   
+      </div>
+      <p className="text-center text-sm mt-3">Developed by <a href="https://github.com/mayura-andrew" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">@mayura-andrew</a></p>
+    </>
+  );
+}

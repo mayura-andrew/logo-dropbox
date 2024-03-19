@@ -4,7 +4,7 @@ const UserForm = () => {
   return (
     <div className="w-full max-w-xs sm:max-w-md items-center">
     <h2 className="text-lg font-bold text-white items-center">Tell us about yourself 🚀</h2>  
-    <form className="bg-gradient-to-r from-blue-700 to-green-500 shadow-md rounded px-4 sm:px-8 pt-6 pb-8 mb-4">
+    <form className="bg-gradient-to-r from-blue-700 to-green-500 shadow-md rounded px-4 sm:px-8 pt-6 pb-8 mb-2">
     <div className="mb-4">
       <label className="block text-white text-sm font-bold mb-2" htmlFor="username">
         Name
