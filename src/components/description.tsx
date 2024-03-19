@@ -3,7 +3,7 @@ import BackImg from '../../public/bg1.avif';
 
 const CompetitionDetails = () => {
   return (
-<div className="prose prose-lg max-w-none text-white rounded-xl bg-gradient-to-r from-black via-pink-900 to-black m-1">
+         <div className="prose prose-lg max-w-none text-white rounded-xl">
         <div className="prose prose-lg max-w-none items-center">
         <h1 className="text-3xl items-center font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-yellow-500 to-white">
           Logo Design Competition
@@ -51,7 +51,6 @@ const CompetitionDetails = () => {
           </ol>
           <p className="mt-6">Get ready to unleash your creativity and be part of something extraordinary! Submit your logo design today and let your talent shine! 🚀✨</p>
         </div>
-
       </div>
   );
 };
