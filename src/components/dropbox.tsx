@@ -23,7 +23,7 @@ export default function Dropbox() {
           height={200}
           value={file}
           dropzoneOptions={{
-            maxSize: 1024 * 1024 * 5, // 1MB
+            maxSize: 1024 * 1024 * 5, // 5MB
           }}
           onChange={(file) => {
             setFile(file);
@@ -38,6 +38,10 @@ export default function Dropbox() {
         <button
           className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 m-2 px-4 rounded focus:outline-none focus:shadow-outline"
           onClick={async () => {
+            if (!file) {
+              alert("Please select an image file before submitting😊.");
+              return;
+            }
             setButtonText("Submitting... 🚀"); 
             if (file) {
               const res = await edgestore.myPublicImages.upload({
