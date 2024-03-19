@@ -2,9 +2,10 @@ import React from 'react';
 
 const CompetitionDetails = () => {
   return (
-    <div className="prose prose-lg max-w-none m-6 bg-black text-white rounded-lg">
-      <div className="prose prose-lg max-w-none m-6">
-        <h1 className="text-3xl font-bold mb-4">Logo Design Competition: Submit Your Creativity!</h1>
+    <div className="prose prose-lg max-w-none bg-black text-white rounded-lg">
+      <div className="prose prose-lg max-w-none">
+        <h1 className="text-3xl font-bold mb-4">Logo Design Competition</h1>
+        <h2 className='text-2xl font-mono font-bold mb-3'>Submit Your Creativity!</h2>
         <p>🎨 Welcome to the Logo Design Competition, where creativity meets innovation! We invite talented designers from all backgrounds to showcase their skills and contribute to the visual identity of our upcoming platform.</p>
 
         <h2 className="text-2xl font-bold mt-6 mb-2">How to Participate:</h2>

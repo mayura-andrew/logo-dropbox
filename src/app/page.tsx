@@ -12,8 +12,8 @@ export default function Page() {
       <div className="flex flex-col items-center gap-2 bg-black text-white">
         <div className="flex flex-col lg:flex-row m-8 gap-4">
           {showDetails && <CompetitionDetails />}
-          <Dropbox />
           <UserForm />
+          <Dropbox />
           <button 
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded " 
             onClick={() => setShowDetails(!showDetails)}
