@@ -28,13 +28,14 @@ export default function Dropbox() {
               setFile(file);
           }} 
           />
-        <div className="h-[6px] w-44 border rounded overflow-hidden">
+        <div className="h-[6px] w-50 border rounded overflow-hidden">
           <div
             className="h-full bg-white transition-all duration-150"
             style={{
               width: `${progress}%`,
             }} />
         </div>
+        <div className="flex items-center justify-center">
         <button
           className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 m-2 px-4 rounded focus:outline-none focus:shadow-outline"
           onClick={async () => {
@@ -62,6 +63,7 @@ export default function Dropbox() {
         >
           {buttonText} {/* Display the current button text */}
         </button>
+        </div>
         {urls?.url && (
           <Link href={urls.url} target="_blank">
             URL

@@ -2,7 +2,7 @@ import React from 'react';
 
 const UserForm = () => {
   return (
-    <div className="w-full max-w-xs sm:max-w-md ml-4 ">
+    <div className="w-full max-w-xs sm:max-w-md items-center">
     <h2 className="text-lg font-bold text-white items-center">Tell us about yourself 🚀</h2>  
     <form className="bg-gradient-to-r from-blue-700 to-green-500 shadow-md rounded px-4 sm:px-8 pt-6 pb-8 mb-4">
     <div className="mb-4">
@@ -35,14 +35,14 @@ const UserForm = () => {
       </label>
       <input className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" id="academicYear" type="text" placeholder="Academic Year" />
     </div>
-    <div className="mb-6">
+    <div className="mb-4">
       <label className="block text-white text-sm font-bold mb-2" htmlFor="email">
         Email
       </label>
       <input className="shadow appearance-none border rounded w-full py-2 px-3 text-black mb-3 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" />
     </div>
-    <div className="flex items-center justify-between">
-      <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+    <div className="flex items-center justify-center">
+      <button className="bg-orange-500 items-center hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
         Submit
       </button>
     </div>
