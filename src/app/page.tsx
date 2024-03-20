@@ -18,7 +18,7 @@ export default function Page() {
                 className="bg-blue-800 hover:bg-blue-700 text-white text-xl font-bold py-2 px-2 rounded mt-4 lg:mt-0 items-stretch" 
                 onClick={() => setShowDetails(!showDetails)}
               >
-                Submit Your Design Here ➡️
+                Submit Your Design (Click here) ➡️
               </button>
             </>
           ) : (
@@ -29,7 +29,10 @@ export default function Page() {
                 className="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded mt-4 lg:mt-0" 
                 onClick={() => setShowDetails(!showDetails)}
               >
-                About this Competition ⬅️
+                About this Competition
+                <p className="text-lg font-bold text-white">Rule & Regulations</p>
+                <p className="text-blue-300 underline cursor-pointer">(Click here)</p>
+                <span className="text-2xl text-white">⬅️</span>
               </button>
             </>
           )}
