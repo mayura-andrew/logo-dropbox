@@ -15,10 +15,10 @@ export default function Page() {
             <>
               <CompetitionDetails />
               <button 
-                className="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded mt-4 lg:mt-0" 
+                className="bg-blue-800 hover:bg-blue-700 text-white text-xl font-bold py-2 px-2 rounded mt-4 lg:mt-0 items-stretch" 
                 onClick={() => setShowDetails(!showDetails)}
               >
-                Submit Your Design
+                Submit Your Design Here ➡️
               </button>
             </>
           ) : (
