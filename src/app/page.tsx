@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import { useState } from 'react';
 import CompetitionDetails from '@/components/description';
 import UserForm from "@/components/userform";
