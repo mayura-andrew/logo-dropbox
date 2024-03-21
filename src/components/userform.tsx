@@ -1,123 +1,230 @@
-import React, {useState} from 'react';
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 
-export const UserForm = () => {
+import { Button } from "@/components/ui/button"
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { Input } from "@/components/ui/input"
+import { useState } from "react"
 
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [registrationNumber, setRegistrationNumber] = useState('');
-  const [studyProgram, setStudyProgram] = useState('')
-  const [faculty, setFaculty] = useState('')
-  const [academicYear, setAcademicYear] = useState('')
-  const [email, setEmail] = useState('')
+
+
+
+const formSchema = z.object({
+  firstname: z.string().min(2, {
+    message: "First name must be at least 3 characters.",
+  }),
+  lastname: z.string().min(2, {
+    message: "Last name must be at least 3 characters.",
+  }),
+  registrationnumber: z.string().min(2, {
+    message: "Registration must be at least 8 characters.",
+  }),
+  studyprogram: z.string().min(2, {
+    message: "Study Program must be at least 5 characters.",
+  }),
+  academicyear: z.string().min(2, {
+    message: "Academic Year must be at least 4 characters. (Ex: 2023)",
+  }),
+  email: z.string().min(2, {
+    message: "Email must be valid email address",
+  }),
+  faculty: z.string().min(2, {
+    message: "Faculty must be at least 5 characters.",
+  })
+})
+
+export default function ProfileForm() {
   const [issumbit, setIsSubmit] = useState(false)
   const [submitStatus, setSubmitStatus] = useState('')
 
-  const handleSubmit = async (event:any) => {
-    event.preventDefault();
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      firstname: "",
+      lastname: "",
+      registrationnumber: "",
+      studyprogram: "",
+      faculty: "",
+      academicyear: "",
+      email: ""
+    },
+  })
+
+  async function onSubmit(values: z.infer<typeof formSchema>)  {
     setIsSubmit(true);
-
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
+    const valuesWithIntegers = {
+      ...values,
+      registrationnumber: parseInt(values.registrationnumber),
+      academicyear: parseInt(values.academicyear),
+    };
+  
     try {
       const response = await fetch("http://localhost:4000/v1/users/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          firstName,
-          lastName,
-          registrationNumber: parseInt(registrationNumber),
-          studyProgram,
-          faculty,
-          academicYear: parseInt(academicYear),
-          email
-        })
+        body: JSON.stringify(valuesWithIntegers)
+
       });
       const data = await response.json();
       if (!response.ok) {
         throw new Error(data.message || "Something went wrong. Try again");
       }
-      setSubmitStatus("Submission successful!");
+      setSubmitStatus("Submission is successful! 🚀");
     } catch(error) {
-      console.error("Error", error)
       setSubmitStatus((error as Error).message);
     } finally {
       setIsSubmit(false);
+    }
+  }
 
-    }
-    
-    }
   return (
-    <div className="w-full max-w-xs sm:max-w-md items-center">
-    <h2 className="text-lg font-bold text-white items-center">Tell us about yourself 🚀</h2>  
-    <form onSubmit={handleSubmit} className="bg-gradient-to-r from-blue-700 to-green-500 shadow-md rounded px-4 sm:px-8 pt-6 pb-8 mb-2">
-    <div className="mb-4">
-      <label className="block text-white text-sm font-bold mb-2" htmlFor="username">
-        First Name
-      </label>
-      <input value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
-        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username" />
-    </div>
-    <div className="mb-4">
-      <label className="block text-white text-sm font-bold mb-2" htmlFor="username">
-        Last Name
-      </label>
-      <input value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
-        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username" />
-    </div>
-    <div className="mb-4">
-      <label className="block text-white text-sm font-bold mb-2" htmlFor="registrationNumber">
-        Registration Number
-      </label>
-      <input value={registrationNumber}
-        onChange={(e) => setRegistrationNumber(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" id="registrationNumber" type="text" placeholder="Registration Number" />
-    </div>
-    <div className="mb-4">
-      <label className="block text-white text-sm font-bold mb-2" htmlFor="studyProgram">
-        Study Program
-      </label>
-      <input value={studyProgram}
-        onChange={(e) => setStudyProgram(e.target.value)}
-        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" id="studyProgram" type="text" placeholder="Study Program" />
-    </div>
-    <div className="mb-4">
-      <label className="block text-white text-sm font-bold mb-2" htmlFor="faculty">
-        Faculty
-      </label>
-      <input value={faculty}
-        onChange={(e) => setFaculty(e.target.value)}
-        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" id="faculty" type="text" placeholder="Faculty" />
-    </div>
-    <div className="mb-4">
-      <label className="block text-white text-sm font-bold mb-2" htmlFor="academicYear">
-        Academic Year
-      </label>
-      <input value={academicYear}
-        onChange={(e) => setAcademicYear(e.target.value)}
-        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" id="academicYear" type="text" placeholder="Academic Year" />
-    </div>
-    <div className="mb-4">
-      <label className="block text-white text-sm font-bold mb-2" htmlFor="email">
-        Email
-      </label>
-      <input value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        className="shadow appearance-none border rounded w-full py-2 px-3 text-black mb-3 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" />
-    </div>
-      <div className="flex items-center justify-center mt-4">
-      <button disabled={issumbit} className="bg-orange-500 items-center hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" type="submit">
-        {issumbit ? "Submitting..." : "Submit"}
-      </button>
-    </div>
-    <div className="mt-4">
-      {submitStatus && <p className="text-center text-red-800">{submitStatus}</p>}
-    </div>
-  </form>
-</div>
-  );
-};
-
-export default UserForm;
+    <>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="border-2 border-gray-300 rounded-lg p-4 w-2/3 space-y-6">
+      <h2 className="text-lg font-bold text-white items-center">Tell us your self 😊</h2>
+        <FormField
+          control={form.control}
+          name="firstname"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>First Name</FormLabel>
+              <FormControl>
+                <Input placeholder="John" {...field} />
+              </FormControl>
+              <FormDescription>
+                Enter your First Name.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="lastname"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Last Name</FormLabel>
+              <FormControl>
+                <Input placeholder="Andrew" {...field} />
+              </FormControl>
+              <FormDescription>
+                Enter your Last Name.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="registrationnumber"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Registration Number</FormLabel>
+              <FormControl>
+                <Input placeholder="7235422" {...field}/>
+              </FormControl>
+              <FormDescription>
+                Enter your Registration Number.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="academicyear"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Academic Year</FormLabel>
+              <FormControl>
+                <Input placeholder="2023" {...field}/>
+              </FormControl>
+              <FormDescription>
+                Enter your Academic Year (Just insert year ex: 2023).
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="studyprogram"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Study Program</FormLabel>
+              <FormControl>
+                <Input placeholder="Bachelor of Software Engineering" {...field} />
+              </FormControl>
+              <FormDescription>
+                Enter your Study Program.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+          <FormField
+          control={form.control}
+          name="faculty"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Faculty</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select your Faculty" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="Faculty of Engineering Technology">Faculty of Engineering Technology</SelectItem>
+                  <SelectItem value="Faculty of Natural Science">Faculty of Natural Science</SelectItem>
+                  <SelectItem value="Faculty of Human Studies">Faculty of Human Studies</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormDescription>
+                You can select your faculty.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input placeholder="john@andrew.dev" {...field} />
+              </FormControl>
+              <FormDescription>
+                Enter your valid Email address.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button variant="default" type="submit">Submit</Button>
+        {submitStatus && <p className="mt-4">{submitStatus}</p>}
+      </form>
+    </Form>
+    </>
+  )
+}

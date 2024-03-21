@@ -1,9 +1,14 @@
 import { EdgeStoreProvider } from '@/lib/edgestore'
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter as FontSans } from 'next/font/google'
+import { cn } from '@/lib/utils'
 
-const inter = Inter({ subsets: ['latin'] })
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+}) 
+  
 
 export const metadata: Metadata = {
   title: 'Join the Logo Competition at OUSL!',
@@ -17,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={cn("min-h-screen bg-background font-sans antialiased")}>
         <EdgeStoreProvider>{children}</EdgeStoreProvider>
       </body>
     </html>

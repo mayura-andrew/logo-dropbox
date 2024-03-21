@@ -3,6 +3,9 @@ import { useEdgeStore } from "@/lib/edgestore";
 import Link from "next/link";
 import { useState } from "react";
 import Contact from "./contact";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Terminal } from "lucide-react";
+import { Button } from "@/components/ui/button"
 
 export default function Dropbox() {
     const [file, setFile] = useState<File>();
@@ -19,7 +22,7 @@ export default function Dropbox() {
     <div>
       <h2 className="text-lg font-bold text-white items-center">Submit your amazingly designed logo here 🎨⬇️</h2>
       <SingleImageDropzone
-          width={462}
+          width={488}
           height={200}
           value={file}
           dropzoneOptions={{
@@ -36,12 +39,18 @@ export default function Dropbox() {
               width: `${progress}%`,
             }} />
         </div>
-        <div className="flex items-center justify-center">
-          <button
-            className="bg-orange-500 items-center hover:bg-orange-700 text-white font-bold py-2 m-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        <div className="flex items-center justify-center m-2">
+          <Button variant="destructive"
             onClick={async () => {
               if (!file) {
-                alert("Please select an image file before submitting😊.");
+                <Alert>
+                  <Terminal className="h-4 w-4" />
+                  <AlertTitle>Heads up!</AlertTitle>
+                  <AlertDescription>
+                    You can add components and dependencies to your app using the cli.
+                  </AlertDescription>
+                </Alert>
+                // alert("Please select an image file before submitting😊.");
                 return;
               }
               setButtonText("Submitting... 🚀"); 
@@ -63,7 +72,7 @@ export default function Dropbox() {
             } }
           >
             {buttonText} {/* Display the current button text */}
-          </button>
+          </Button>
           {urls?.url && (
           <Link href={urls.url} target="_blank">
             URL
@@ -75,7 +84,9 @@ export default function Dropbox() {
           </Link>
         )}
         </div>
-        <Contact />
+        <div className="gap-1 m-2">
+          <Contact />
+        </div>
         
     </div>
   </>
