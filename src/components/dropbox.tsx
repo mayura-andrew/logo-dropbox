@@ -75,12 +75,12 @@ export default function Dropbox() {
           </Button>
           {urls?.url && (
           <Link href={urls.url} target="_blank">
-            URL
+            Preview
           </Link>
         )}
         {urls?.thumbnailUrl && (
           <Link href={urls.thumbnailUrl} target="_blank">
-             Review
+             Here
           </Link>
         )}
         </div>
