@@ -75,7 +75,7 @@ export default function ProfileForm() {
     };
   
     try {
-      const response = await fetch("https://157.245.110.226/v1/users/", {
+      const response = await fetch("http://157.245.110.226/v1/users/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
