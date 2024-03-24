@@ -78,7 +78,7 @@ export default function ProfileForm() {
       const response = await fetch("https://157.245.110.226/v1/users", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          accept: "Accept: application/json"
         },
         body: JSON.stringify(valuesWithIntegers)
 
