@@ -75,7 +75,7 @@ export default function ProfileForm() {
     };
   
     try {
-      const response = await fetch("http://206.189.138.245/v1/users/", {
+      const response = await fetch("https://206.189.138.245/v1/users/", {
         method: "POST",
         headers: {
           accept: "Accept: application/json"
